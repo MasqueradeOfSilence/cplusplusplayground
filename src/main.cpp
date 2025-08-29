@@ -19,6 +19,11 @@ void passByPointer(int* x)
     *x = 1924;
 }
 
+struct Player
+{
+    int health;
+};
+
 int main()
 {
     cout << "Too bad that didn't kill me." << endl;
@@ -43,6 +48,27 @@ int main()
 
     cout << "When I go will my loved ones miss me?" << endl;
     cout << "Well the answer is NO!" << endl;
+
+    // Understanding stack vs. heap objects
+    // STACK OBJECT
+    Player p;
+    p.health = 100; // Direct access
+    cout << "Player health is " << p.health << endl;
+
+    // POINTER to STACK OBJECT
+    Player* pointerToPlayerOnStack = &p;
+    // Direct hit!
+    pointerToPlayerOnStack->health = 50;
+    cout << "Expecting player health of 50: " << pointerToPlayerOnStack->health << endl;
+    (*pointerToPlayerOnStack).health = 69;
+    cout << "Expecting player health of 69: " << (*pointerToPlayerOnStack).health << endl;
+
+    // POINTER TO HEAP OBJECT
+    Player* pointerToPlayerOnHeap = new Player();
+    pointerToPlayerOnHeap->health = 6;
+    cout << "Expecting player health of 6: " << pointerToPlayerOnHeap->health << endl;
+    delete pointerToPlayerOnHeap;
+    pointerToPlayerOnHeap = nullptr;
 
     return 0;
 }
