@@ -67,6 +67,10 @@ int main()
     Player* pointerToPlayerOnHeap = new Player();
     pointerToPlayerOnHeap->health = 6;
     cout << "Expecting player health of 6: " << pointerToPlayerOnHeap->health << endl;
+    /* We always delete the pointer before we set it to null.
+        Otherwise, you are setting the pointer to null but not actually freeing any memory (because the reference is gone)
+        and this causes leaks. 
+     */
     delete pointerToPlayerOnHeap;
     pointerToPlayerOnHeap = nullptr;
 
