@@ -1,16 +1,19 @@
 #include <iostream> 
 using namespace std;
 
+// Copy of x
 void passByValue(int x)
 {
     x = 10;
 }
 
+// Direct reference to x
 void passByReference(int& x)
 {
     x = 12;
 }
 
+// Pointer to x (passed in as &x)
 void passByPointer(int* x)
 {
     *x = 1924;
